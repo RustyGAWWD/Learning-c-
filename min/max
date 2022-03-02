@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main()
+{
+  int arrindx,i,value,j,start,end,mid,max1=0,min1=1000000000,max2=0,min2=1000000000,max,min;
+    printf("how many elemnets do u want in ur ARRAY?");
+    scanf("%d",&arrindx);
+    int arr[arrindx];
+    for (i=0;i<arrindx;i++){
+        printf("enter value");
+        scanf("%d",&value);
+        arr[i]=value;
+    }
+    for (j=0;j<=arrindx-1;j++){
+        printf("element no: %d is %d\n",j+1,arr[j]);
+    }
+    start=0;
+    end=arrindx;
+    if(start==end)
+    {
+    min=arr[start];
+    max=arr[start];
+    }
+    else if(start==end-1)
+    {
+        if (arr[start]>arr[end]) {max=arr[start];min=arr[end];}
+        else {min=arr[start];max=arr[end];}
+    }
+    else
+    {
+    mid=(start+end)/2;
+    for(i=0;i<mid;i++)
+    {
+        if(arr[i]>max) max1=arr[i];
+        if(arr[i]<min) min1=arr[i];
+    }
+    for(i=mid+1;i<end;i++)
+    {
+        if(arr[i]>max) max2=arr[i];
+        if(arr[i]<min) min2=arr[i];
+    }
+    if(max1>max2) max=max1;
+    else max=max2;
+    if(min1>min2) min=min2;
+    else min=min1;
+    }
+    printf("max value is %d",max);
+    printf("\nmin value is %d",min);
+    return 0;
+}
